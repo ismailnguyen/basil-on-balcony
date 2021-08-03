@@ -1,42 +1,45 @@
 {
   "name": "basil-on-balcony",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Basil on balcony",
+  "repository": "https://github.com/ismailnguyen/basil-on-balcony",
+  "license": "WTFPL (see more at www.wtfpl.net)",
+  "author": "Ismaïl NGUYEN",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "now-build": "nuxt generate"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/bulma": "^1.2.6",
+    "@nuxtjs/markdownit": "^1.2.9",
+    "@nuxtjs/sitemap": "^2.0.1",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "frontmatter-markdown-loader": "^3.1.0",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.6",
+    "node-xlsx": "^0.17.1",
+    "nuxt": "^2.0.0",
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/google-analytics": "^2.2.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
 }
