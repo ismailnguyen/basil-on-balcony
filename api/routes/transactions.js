@@ -21,20 +21,18 @@ router.get('/transactions', async function (req, res) {
         for (var i=0; i<rows.length; i++) {
             const nonEmptyDatas = rows[i].data.filter(d => d.length > 0)
             for (var j=0; j<nonEmptyDatas.length; j++) {
-                // Ignore headers
-                if (j == 0) {
+                const amount = nonEmptyDatas[j][4].replace(',', '.').replace(/\s+/g, '') || '';
 
-                
+                // Ignore headers and lines with no amount
+                if (j == 0 && isNaN(amount))
                     continue;
-                }
 
                 sheet.push({
                     date: excelDateToJSDate(nonEmptyDatas[j][0]) || '',
                     category: nonEmptyDatas[j][1] || '',
                     fundSource: nonEmptyDatas[j][2] || '',
                     label: nonEmptyDatas[j][3] || '',
-                    amount: nonEmptyDatas[j][4] || '',
-                    isnan : isNaN(nonEmptyDatas[j][4])
+                    amount: amount
                 });
             }
             
