@@ -10,10 +10,10 @@ function excelDateToJSDate(serial) {
     var date_info = new Date(utc_value * 1000);
  
     return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate());
- }
+}
 
-router.get('/transactions', async function (req, res) {
-    let sheet = [];
+function getTransactionsForPeriod (dateFrom, dateTo) {
+    let transactions = [];
     var xlsx = require('node-xlsx').default;
 
     for (const file of fs.readdirSync(path.resolve(__dirname, '../' + environmentConfiguration.transactionsFolderPath))) {
@@ -27,8 +27,17 @@ router.get('/transactions', async function (req, res) {
                 if (j == 0 && isNaN(amount))
                     continue;
 
-                sheet.push({
-                    date: excelDateToJSDate(nonEmptyDatas[j][0]) || '',
+
+                const date = excelDateToJSDate(nonEmptyDatas[j][0]) || '';
+
+                if (dateFrom && dateFrom >= date)
+                    continue;
+
+                if (dateTo && dateTo <= date)
+                    continue;
+
+                transactions.push({
+                    date: date,
                     category: nonEmptyDatas[j][1] || '',
                     fundSource: nonEmptyDatas[j][2] || '',
                     label: nonEmptyDatas[j][3] || '',
@@ -39,7 +48,19 @@ router.get('/transactions', async function (req, res) {
         }
     }
 
-    res.json(sheet)
+    return transactions;
+}
+
+function getTransactions () {
+    return getTransactionsForPeriod(null, null);
+}
+
+router.get('/transactions', async function (req, res) {
+    res.json(getTransactions())
+})
+
+router.get('/transactions/from/:from/to/:to', async function (req, res) {
+    res.json(getTransactionsForPeriod(new Date(req.params.from),new Date(req.params.to)))
 })
 
 module.exports = router

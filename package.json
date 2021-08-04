@@ -31,7 +31,8 @@
     "glob": "^7.1.6",
     "node-xlsx": "^0.17.1",
     "nuxt": "^2.0.0",
-    "nuxt-fontawesome": "^0.4.0"
+    "nuxt-fontawesome": "^0.4.0",
+    "vue-google-charts": "^0.3.3"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",

@@ -16,7 +16,7 @@
 
     <div class="navbar-menu" v-bind:class="{ 'is-active': isNavbarMenuOpened }">
       <div class="navbar-start">
-        <nuxt-link class="navbar-item navbar-link is-arrowless" to="/">
+        <nuxt-link class="navbar-item navbar-link is-arrowless is-tab" to="/">
           Overview
         </nuxt-link>
 
@@ -40,19 +40,13 @@
             </a>
           </div>
         </div>
-        <nuxt-link class="navbar-item navbar-link is-arrowless" to="/budgets">
+        <nuxt-link class="navbar-item navbar-link is-arrowless is-tab" to="/budgets">
           Budget
         </nuxt-link>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-light" target="_blank" rel="noopener">
-              Settings
-            </a>
-          </div>
-        </div>
+      <div class="navbar-end navbar-menu">
+        <a class="navbar-item is-tab">Settings</a>
       </div>
     </div>
   </nav>
